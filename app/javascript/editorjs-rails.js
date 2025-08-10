@@ -44,6 +44,7 @@ function initializeEditor(el) {
       },
       paragraph: {
         inlineToolbar: true,
+        preserveBlank: true,
       },
       image: {
         class: ImageTool,
