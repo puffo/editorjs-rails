@@ -57,11 +57,6 @@ function initializeEditor(el) {
   });
 }
 
-// Initialize on DOMContentLoaded
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".editorjs").forEach(initializeEditor);
-});
-
 // Initialize on Turbo load (for Rails Turbo support)
 document.addEventListener("turbo:load", () => {
   document.querySelectorAll(".editorjs").forEach(initializeEditor);

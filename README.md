@@ -9,7 +9,7 @@ Provides Rails helpers and JavaScript modules to integrate the Editor.js block-s
 Add the `editorjs-rails` gem to your `Gemfile`:
 
 ```ruby
-gem "editorjs-rails", github: "inaudito/editorjs-rails"
+gem "editorjs-rails", github: "puffo/editorjs-rails"
 ```
 
 Run the installation generator:
