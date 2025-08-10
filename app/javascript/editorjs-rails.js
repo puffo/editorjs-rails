@@ -5,6 +5,11 @@ import NestedList from "@editorjs/nested-list";
 import Quote from "@editorjs/quote";
 import RawTool from "@editorjs/raw";
 import Delimiter from "@editorjs/delimiter";
+
+// Inline tools
+import Marker from "@editorjs/marker";
+import InlineCode from "@editorjs/inline-code";
+import Underline from "@editorjs/underline";
 import Strikethrough from "@sotaproject/strikethrough";
 
 if (!window.EditorJS) { window.EditorJS = {} }
@@ -23,8 +28,24 @@ function initializeEditor(el) {
   }
 
   const editor = new EditorJS({
+    holder: el,
+    data,
+    placeholder: 'Let\'s write an awesome story!',
+    inlineToolbar: ['bold', 'italic', 'link', 'marker', 'underline', 'strikethrough', 'inlineCode'],
     tools: {
-      header: Header,
+      header: {
+        class: Header,
+        inlineToolbar: true,
+        config: {
+          placeholder: 'Enter a header',
+          levels: [1, 2, 3, 4, 5, 6],
+          defaultLevel: 2
+        },
+        shortcut: 'CMD+ALT+H'
+      },
+      paragraph: {
+        inlineToolbar: true,
+      },
       image: {
         class: ImageTool,
         config: {
@@ -40,15 +61,37 @@ function initializeEditor(el) {
           },
         }
       },
-      list: NestedList,
-      quote: Quote,
+      list: {
+        class: NestedList,
+        inlineToolbar: true,
+        shortcut: 'CMD+ALT+L'
+      },
+      quote: {
+        class: Quote,
+        inlineToolbar: true,
+        shortcut: 'CMD+ALT+Q'
+      },
       raw: RawTool,
       delimiter: Delimiter,
-      strikethrough: Strikethrough,
+      // Inline tools
+      marker: {
+        class: Marker,
+        shortcut: 'CMD+SHIFT+M',
+      },
+      inlineCode: {
+        class: InlineCode,
+        shortcut: 'CMD+SHIFT+C',
+      },
+      underline: {
+        class: Underline,
+        shortcut: 'CMD+SHIFT+U',
+      },
+      strikethrough: {
+        class: Strikethrough,
+        shortcut: 'CMD+SHIFT+S',
+      },
       ...window.EditorJS.Rails.tools,
     },
-    holder: el,
-    data,
   });
 
   form.addEventListener("submit", async () => {

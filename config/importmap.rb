@@ -6,6 +6,11 @@ pin "@editorjs/nested-list", to: "https://esm.sh/@editorjs/nested-list@1.3.0"
 pin "@editorjs/quote", to: "https://esm.sh/@editorjs/quote@2.5.0"
 pin "@editorjs/image", to: "https://esm.sh/@editorjs/image@2.8.1"
 pin "@editorjs/raw", to: "https://esm.sh/@editorjs/raw@2.5.1"
+
+# Inline tools
+pin "@editorjs/marker", to: "https://esm.sh/@editorjs/marker@1.3.0"
+pin "@editorjs/inline-code", to: "https://esm.sh/@editorjs/inline-code@1.4.0"
+pin "@editorjs/underline", to: "https://esm.sh/@editorjs/underline@1.1.0"
 pin "@sotaproject/strikethrough", to: "https://esm.sh/@sotaproject/strikethrough@1.0.1"
 
 # Pin the main editorjs-rails module
