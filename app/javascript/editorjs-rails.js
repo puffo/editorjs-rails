@@ -30,7 +30,6 @@ function initializeEditor(el) {
   const editor = new EditorJS({
     holder: el,
     data,
-    placeholder: 'Let\'s write an awesome story!',
     inlineToolbar: ['bold', 'italic', 'link', 'marker', 'underline', 'strikethrough', 'inlineCode'],
     tools: {
       header: {
