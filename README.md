@@ -1,8 +1,8 @@
 # editorjs-rails
 
-[Editor.js](https://editorjs.io/) integration for Rails.
+[Editor.js](https://editorjs.io/) integration for Rails using importmaps.
 
-Provides some helpers and a little bit of Javascript to integrate the Editor.js block model into a Rails application.
+Provides Rails helpers and JavaScript modules to integrate the Editor.js block-styled editor into Rails applications without requiring a build step.
 
 ## Installation
 
@@ -12,10 +12,19 @@ Add the `editorjs-rails` gem to your `Gemfile`:
 gem "editorjs-rails", github: "inaudito/editorjs-rails"
 ```
 
-Migrate your database:
+Run the installation generator:
 
 ```sh
-rails editorjs:install:migrations
+rails generate editorjs:install
+```
+
+This will:
+- Add the editorjs-rails import to your application.js
+- Install the database migrations
+
+Then migrate your database:
+
+```sh
 rails db:migrate
 ```
 
@@ -23,12 +32,6 @@ Mount `Editorjs::Engine` in your `routes.rb`:
 
 ```ruby
 mount Editorjs::Engine, at: "/editorjs"
-```
-
-Add the included script to your application layout:
-
-```erb
-<%= javascript_include_tag "editorjs-rails", "data-turbo-track": "reload", defer: true, type: "module" %>
 ```
 
 ## Usage

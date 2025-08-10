@@ -16,9 +16,10 @@ module Editorjs
       end
     end
 
-    initializer "editorjs-rails.asset" do
-      if Rails.application.config.respond_to?(:assets)
-        Rails.application.config.assets.precompile += %w(editorjs-rails.js)
+    initializer "editorjs-rails.importmap", before: "importmap" do |app|
+      if Rails.application.respond_to?(:importmap)
+        app.config.importmap.paths << Engine.root.join("config/importmap.rb")
+        app.config.importmap.cache_sweepers << Engine.root.join("app/javascript")
       end
     end
 

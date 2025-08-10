@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
   spec.require_path = "lib"
 
   spec.add_dependency "rails", ">= 8.0.2"
+  spec.add_dependency "importmap-rails", ">= 1.0"
   spec.add_dependency "addressable", "~> 2.8"
   spec.add_dependency "faraday", "~> 2.10"
 end

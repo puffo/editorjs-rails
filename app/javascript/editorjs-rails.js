@@ -5,12 +5,12 @@ import NestedList from "@editorjs/nested-list";
 import Quote from "@editorjs/quote";
 import RawTool from "@editorjs/raw";
 import Delimiter from "@editorjs/delimiter";
-import "@sotaproject/strikethrough";
+import Strikethrough from "@sotaproject/strikethrough";
 
 if (!window.EditorJS) { window.EditorJS = {} }
 if (!window.EditorJS.Rails) { window.EditorJS.Rails = { tools: {} } }
 
-document.querySelectorAll(".editorjs").forEach(el => {
+function initializeEditor(el) {
   const input = el.parentElement.querySelector(`#${el.dataset.input}`);
   const form = input.form;
 
@@ -55,4 +55,18 @@ document.querySelectorAll(".editorjs").forEach(el => {
     const data = await editor.save();
     input.value = JSON.stringify(data);
   });
+}
+
+// Initialize on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".editorjs").forEach(initializeEditor);
 });
+
+// Initialize on Turbo load (for Rails Turbo support)
+document.addEventListener("turbo:load", () => {
+  document.querySelectorAll(".editorjs").forEach(initializeEditor);
+});
+
+// Export for manual initialization
+export { initializeEditor };
+export default EditorJS;
