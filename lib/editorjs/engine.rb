@@ -23,6 +23,12 @@ module Editorjs
       end
     end
 
+    initializer "editorjs-rails.assets" do |app|
+      if Rails.application.config.respond_to?(:assets)
+        app.config.assets.paths << Engine.root.join("app/javascript")
+      end
+    end
+
     initializer "editorjs-rails.helper" do
       %i[action_controller_base action_mailer].each do |abstract_controller|
         ActiveSupport.on_load(abstract_controller) do
